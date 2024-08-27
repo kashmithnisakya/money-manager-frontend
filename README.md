@@ -1,1 +1,1 @@
-# Money Manager Frontend
+# Money Manager Web
