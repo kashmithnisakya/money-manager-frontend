@@ -3,11 +3,12 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import axios from 'axios'
-
+import { useRouter } from 'next/navigation'
 
 export default function Login() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const router = useRouter()
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
@@ -22,6 +23,7 @@ export default function Login() {
         },
       })
       console.log('Logged in:', response.data)
+      router.push('dashboard')
     } catch (error) {
       console.error('Login error:', error)
     }
