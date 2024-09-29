@@ -3,17 +3,20 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 export default function Signup() {
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const router = useRouter()
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
     try {
       const response = await axios.post('http://127.0.0.1:8000/users', { name, email, password })
       console.log('Signed up:', response.data)
+      router.push('login')
     } catch (error) {
       console.error('Signup error:', error)
     }
@@ -37,7 +40,7 @@ export default function Signup() {
             <input
               type="text"
               id="name"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors text-black"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
@@ -55,7 +58,7 @@ export default function Signup() {
             <input
               type="email"
               id="email"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors text-black"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -73,7 +76,7 @@ export default function Signup() {
             <input
               type="password"
               id="password"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors text-black"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -92,7 +95,7 @@ export default function Signup() {
         {/* Already have an account? */}
         <p className="mt-6 text-center text-gray-600">
           Already have an account?{' '}
-          <Link href="/login">
+          <Link href="login">
             <span className="text-primary hover:underline">Log in</span>
           </Link>
         </p>

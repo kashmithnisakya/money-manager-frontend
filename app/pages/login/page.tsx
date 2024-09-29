@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import axios from 'axios'
 
+
 export default function Login() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -11,7 +12,15 @@ export default function Login() {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
     try {
-      const response = await axios.post('http://127.0.0.1:8000/login', { email, password })
+      const formData = new FormData()
+      formData.append('username', email)
+      formData.append('password', password)
+  
+      const response = await axios.post('http://127.0.0.1:8000/login', formData, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      })
       console.log('Logged in:', response.data)
     } catch (error) {
       console.error('Login error:', error)
@@ -35,7 +44,7 @@ export default function Login() {
             <input
               type="email"
               id="email"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors text-black"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -51,7 +60,7 @@ export default function Login() {
             <input
               type="password"
               id="password"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-colors text-black"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
