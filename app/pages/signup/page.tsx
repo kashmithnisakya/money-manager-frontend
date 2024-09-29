@@ -14,7 +14,7 @@ export default function Signup() {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
     try {
-      const response = await axios.post('http://127.0.0.1:8000/users', { name, email, password })
+      const response = await axios.post('https://b852-103-21-166-75.ngrok-free.app/users', { name, email, password })
       console.log('Signed up:', response.data)
       router.push('login')
     } catch (error) {

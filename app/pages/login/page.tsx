@@ -17,7 +17,7 @@ export default function Login() {
       formData.append('username', email)
       formData.append('password', password)
   
-      const response = await axios.post('http://127.0.0.1:8000/login', formData, {
+      const response = await axios.post('https://b852-103-21-166-75.ngrok-free.app/login', formData, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
