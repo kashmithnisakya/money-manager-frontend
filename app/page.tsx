@@ -24,7 +24,7 @@ const HomePage = () => {
           <div className="bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg shadow-lg p-10 w-full max-w-4xl text-center">
             <h2 className="text-3xl font-semibold mb-4">Effortlessly Manage Your Money</h2>
             <p className="text-lg mb-8">
-              Monitor your income, expenses, and savings in one easy-to-use app. Whether you&apos;re saving for the future or managing your monthly budget, we're here to help.
+              Monitor your income, expenses, and savings in one easy-to-use app. Whether you&apos;re saving for the future or managing your monthly budget, we&apos;re here to help.
             </p>
             <div className="mt-6 flex justify-center space-x-6">
               <Link href="pages/signup" className="bg-white text-blue-500 font-bold px-6 py-3 rounded-lg hover:bg-gray-100 shadow-lg transition">
